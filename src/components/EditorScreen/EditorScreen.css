@@ -1,0 +1,12 @@
+.EditorScreen{
+    background-color: aqua;
+    width: 70%;
+    height: 100vh;
+}
+.compiler-screen{
+    height: 90%;
+}
+.footer{
+    background-color: green;
+    height: 10%;
+}
