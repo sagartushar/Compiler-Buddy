@@ -10,7 +10,10 @@ import {
   updateParticipant,
 } from "./store/actioncreator";
 import { connect } from "react-redux";
+
 import EditorScreen from './components/EditorScreen/EditorScreen';
+import ProblemPage from './components/ProblemScreen/ProblemPage';
+
 
 function App(props) {
   const getUserStream = async () => {
@@ -80,6 +83,7 @@ function App(props) {
 
   return (
     <div className="App">
+      <ProblemPage />
       <EditorScreen />
       <MainScreen />
     </div>

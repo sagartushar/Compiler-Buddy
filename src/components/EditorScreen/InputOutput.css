@@ -1,0 +1,41 @@
+.input-output-container{
+    height: 100%;
+    width: 100%;
+    background-color: #232728;
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons-container{
+    width: 100%;
+    padding: 7px;
+    height: 40px;
+    background-color: #232730;
+    /* display: flex;
+    justify-content: flex-end; */
+  
+}
+.Input-Output-Area{
+    width: 100%;
+    
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Input-Output-Area div{
+    height: 95%;
+    width: 98%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+textarea{
+    resize: none;
+    height: inherit;
+    width: inherit;
+    box-sizing: content-box;
+    border-radius: 12px;
+    border-width: 2px;
+    background-color: #232728;
+}

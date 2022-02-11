@@ -1,0 +1,21 @@
+.problem-page{
+    height: 100vh;
+    width : 35vw;
+    background: #8a9dac;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.problem-header{
+   height: 10%;
+   width: 100%;
+   background-color: aqua;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.problem-footer{
+    height: 90%;
+    width: 100%;
+    background-color: blue;
+}

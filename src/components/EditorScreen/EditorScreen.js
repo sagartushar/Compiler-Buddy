@@ -5,12 +5,7 @@ import Text from './Text';
 function EditorScreen() {
   return (
     <div className ="EditorScreen">
-        <div className ="compiler-screen">
-            <Text/>
-        </div>
-        <div className ="footer">
-
-        </div>
+        <Text/>
     </div>
     )
 }

@@ -1,0 +1,52 @@
+  .codeforces {
+    text-align: left;
+    height: 100%;
+    overflow-y: scroll;
+    width: auto;
+    background-color: #252526;
+  }
+
+  
+  .codeforces .katex-display {
+    display: inline-flex;
+    margin: 0px;
+  }
+  
+  .codeforces .ttypography {
+    color: whitesmoke;
+    font-size: 16px;
+    word-wrap: break-word;
+    margin: 1.5em 0 0 0 !important;
+    
+  }
+  
+  .codeforces .problem-statement {
+    margin: 0.5em;
+    line-height: 1.5em;
+    margin-bottom: 1em;
+  }
+  
+  .codeforces .header {
+    text-align: center;
+  }
+  
+  .codeforces pre {
+    white-space: pre-wrap;
+    background: #2d2d30;
+    padding: 10px 15px;
+    color: whitesmoke;
+    line-height: 1.6;
+    font-size: 13px;
+    border-radius: 3px;
+    margin-top: 0;
+    margin-bottom: 1em;
+    overflow: auto;
+    overflow: hidden;
+  }
+  
+  .codeforces .input {
+    background-color: #2d2d30;
+  }
+  .codeforces .output {
+    background-color: #2d2d30;
+  }

@@ -2,12 +2,12 @@ import React, { useEffect, useState , Component } from 'react';
 import axios from 'axios';
 import "./Text.css";
 import Editor from './Editor.js';
-
+import InputOutput from './InputOutput';
 export default class Text extends Component {
     constructor(){
         super();
         this.state={
-            code:'sa',
+            code:'#include<iostream>',
             language:'cpp',
             input:'',
             output:''
@@ -16,9 +16,8 @@ export default class Text extends Component {
     }
 
     handleChange1=(data)=>{
-        console.log("print ho rh",this.state);
         this.setState({
-          code: data.value
+          code: data
         })
     }
     handleChange2=(e)=>{
@@ -26,7 +25,6 @@ export default class Text extends Component {
         language: e.target.value
       })
 
-    //   console.log(this.state);
     }
     handleChange3=(e)=>{
   
@@ -47,16 +45,14 @@ export default class Text extends Component {
               },
               data : this.state
           };
-          await axios(config)
+        await axios(config)
         .then(function (response) {
-          console.log(JSON.stringify(response.data.output));
           val = JSON.stringify(response.data.output);
         })
         .catch(function (error) {
           console.log(error);
         });
 
-        // console.log(val);
         this.setState({
           output : val
         })
@@ -69,15 +65,16 @@ export default class Text extends Component {
         
         <div className="editor-screen">
             <div className="editor"> 
-{/*            
-                <textarea type="text" 
-                    placeholder="Code"  
-                    value={this.state.code} onChange={this.handleChange1}
-                /> */}
-
-                <Editor mystate = {this.state} handleChange1 = {this.handleChange1}/>
+              <Editor mystate = {this.state} 
+                handleChange1 = {this.handleChange1} />
             </div>
-            <div className = "input-output">
+            <div className= 'input-output-scrren'>
+              <InputOutput mystate = {this.state}
+                 handleChange3 = {this.handleChange3} 
+                 handleSubmit = {this.handleSubmit}/> 
+            </div>
+            
+            {/* <div className = "input-output">
                 <div className="input">
                     <textarea type="text" 
                         placeholder="input" 
@@ -91,6 +88,7 @@ export default class Text extends Component {
                         value={this.state.output}
                     />
                 </div>
+                
 
                 <div className="lang-run">
                     <label for="Lang">Lang:</label>
@@ -110,7 +108,7 @@ export default class Text extends Component {
                     >RUN</button>
 
                 </div>
-            </div>
+            </div> */}
         </div>
 
         

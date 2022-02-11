@@ -1,48 +1,38 @@
 import React, { useEffect, useState } from 'react';
+import AceEditor from "react-ace";
+
+
+import "ace-builds/src-noconflict/mode-java";
+import 'ace-builds/src-noconflict/mode-c_cpp';
+import 'ace-builds/src-noconflict/mode-python';
+
+import "ace-builds/src-noconflict/theme-monokai";
+import 'ace-builds/src-noconflict/snippets/java';
+import 'ace-builds/src-noconflict/mode-snippets';
+import "ace-builds/src-noconflict/ext-language_tools"
 
 const Editor = ( props) => {
-    console.log("meri state" ,props.mystate);
-    const spaces = 4;
-    const [text, setText] = useState({value: props.mystate.code, caret: -1, target: null});
-
-    useEffect(() => {
-
-        if(text.caret >= 0){
-
-            text.target.setSelectionRange(text.caret + spaces, text.caret + spaces);
-
-        }
-
-    }, [text]);
-
-    const handleTab = (e) => {
-
-        let content = e.target.value;
-        let caret   = e.target.selectionStart;
-
-        if(e.key === 'Tab'){
-
-            e.preventDefault();
-
-            let newText = content.substring(0, caret) + ' '.repeat(spaces) + content.substring(caret);
-
-            setText({value: newText, caret: caret, target: e.target});
-
-        }
-
-    }
-
-    const handleText = (e) => {
-        setText({value: e.target.value, caret: -1, target: e.target});
-        props.handleChange1(text);
-    }
-
+    
     return(
-        <textarea
-            onChange  = {handleText}
-            onKeyDown = {handleTab}
-            value     = {text.value}
-        />
+        <AceEditor
+            mode="c_cpp"
+            theme="monokai"
+            width="100%"
+            height='100%'
+            onChange = {(e)=>{props.handleChange1(e)}}
+            fontSize={16}
+            showPrintMargin={true}
+            showGutter={true}
+            highlightActiveLine={true}
+            placeholder ="Write Here"
+            value={props.mystate.code}
+            setOptions={{
+                enableBasicAutocompletion: true,
+                enableLiveAutocompletion: true,
+                enableSnippets: true,
+                showLineNumbers: true,
+                tabSize: 4 ,
+        }}/>
     )
 
 }
