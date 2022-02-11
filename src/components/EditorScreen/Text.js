@@ -7,7 +7,7 @@ export default class Text extends Component {
     constructor(){
         super();
         this.state={
-            code:'#include<iostream>',
+            code: '#include<iostream>\nusing namespace std;\nint main()\n{\n    //Write Code Here..\n    return 0;\n}',
             language:'cpp',
             input:'',
             output:''
@@ -35,6 +35,7 @@ export default class Text extends Component {
 
 
     handleSubmit = async() => {
+      console.log("yeri " , this.state);
         var val  = "";
 
         var config = {

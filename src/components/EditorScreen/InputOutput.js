@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "./InputOutput.css"
 import Button from '@mui/material/Button';
-
+import { red } from '@mui/material/colors';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -15,7 +15,16 @@ import Output from './Output';
 
 function InputOutput(props) {
     var [showInput , setCount] = useState(true);
-
+    var c = {
+        palette: {
+          primary: {
+            main: '#82b1ff',
+          },
+          secondary: {
+            main: '#ff80ab',
+          },
+        },
+      };
     useEffect(() => {
         
     });
@@ -44,9 +53,9 @@ function InputOutput(props) {
                     </Box>
                    
                 
-                    <Button sx = {{bgcolor : ''}}variant="contained" onClick = {() =>setCount(showInput = true)}>Input</Button>
+                    <Button   variant="contained" onClick = {() =>setCount(showInput = true)}>Input</Button>
                     <Button sx = {{bgcolor : ''}}variant="contained" onClick = {() =>setCount(showInput = false)}>Output</Button>
-                    <Button variant="contained" onClick = {() => props.handleSubmit()} endIcon={<SendIcon /> }>Run</Button>
+                    <Button color = "secondary" variant="contained" onClick = {() => props.handleSubmit()} endIcon={<SendIcon /> }>Run</Button>
                 </Stack>
             </div>
 
