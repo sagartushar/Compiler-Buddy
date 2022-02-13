@@ -7,6 +7,7 @@ function Output(props) {
         <textarea type ="text" 
             placeholder="output"
             value={props.props.mystate.output}
+            style = {{border : 'none'}}
         />
     </div>
   )

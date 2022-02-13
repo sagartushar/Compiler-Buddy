@@ -3,6 +3,8 @@ import axios from 'axios';
 import "./Text.css";
 import Editor from './Editor.js';
 import InputOutput from './InputOutput';
+import DownloadIcon from '@mui/icons-material/Download';
+
 export default class Text extends Component {
     constructor(){
         super();
@@ -10,21 +12,46 @@ export default class Text extends Component {
             code: '#include<iostream>\nusing namespace std;\nint main()\n{\n    //Write Code Here..\n    return 0;\n}',
             language:'cpp',
             input:'',
-            output:''
+            output:'',
+            mode: 'c_cpp',
+            theme: 'monokai'
         }
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.changeTheme = this.changeTheme.bind(this);
     }
-
+    downloadTxtFile = () => {
+      const element = document.createElement("a");
+      const file = new Blob([this.state.code], {type: 'text/plain'});
+      element.href = URL.createObjectURL(file);
+      element.download = "Code.txt";
+      document.body.appendChild(element); // Required for this to work in FireFox
+      element.click();
+    }
     handleChange1=(data)=>{
         this.setState({
           code: data
         })
     }
-    handleChange2=(e)=>{
+    changeLang=(e)=>{
       this.setState({
         language: e.target.value
       })
-
+      var lang = e.target.value;
+    
+      if(lang === "java"){
+        this.setState({
+          mode : 'java'
+        })
+      }else if(lang === "py"){
+        this.setState({
+          mode: 'python'
+        })
+      }else {
+        this.setState({
+          mode : 'c_cpp'
+        })
+      }
+      
     }
     handleChange3=(e)=>{
   
@@ -32,7 +59,11 @@ export default class Text extends Component {
         input: e.target.value
       })
     }
-
+    changeTheme = (e) => {
+      this.setState({
+        theme : e.target.value
+      })
+    }
 
     handleSubmit = async() => {
       console.log("yeri " , this.state);
@@ -59,20 +90,27 @@ export default class Text extends Component {
         })
     }
     
+  
   render() {
     const {mystate} = this.state;
    
     return(
         
         <div className="editor-screen">
-            <div className="editor"> 
-              <Editor mystate = {this.state} 
+          
+          <div className="editor"> 
+              <button onClick={this.downloadTxtFile}><DownloadIcon /></button>
+              <Editor mystate = {this.state} id="myInput"
                 handleChange1 = {this.handleChange1} />
             </div>
             <div className= 'input-output-scrren'>
               <InputOutput mystate = {this.state}
                  handleChange3 = {this.handleChange3} 
-                 handleSubmit = {this.handleSubmit}/> 
+                 handleSubmit = {this.handleSubmit}
+                 changeLang = {this.changeLang}
+                 changeTheme = {this.changeTheme}
+                 /> 
+                 
             </div>
             
             {/* <div className = "input-output">

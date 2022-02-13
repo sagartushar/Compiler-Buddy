@@ -5,11 +5,21 @@
 .editor{
     height : 70%;
     width: 100%;
+    position: relative;
+}
+.editor button{
+    position : absolute;
+    top : 0;
+    right: 0;
+    z-index: 1;
+    background-color: #232728;
+    border: none;
+    color: whitesmoke;
 }
 .input-output-scrren{
     height: 30%;
     width: 100%; 
-
+   
 }
 
 

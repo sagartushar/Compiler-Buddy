@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "./InputOutput.css"
 import Button from '@mui/material/Button';
-import { red } from '@mui/material/colors';
+
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -28,11 +28,15 @@ function InputOutput(props) {
     useEffect(() => {
         
     });
-
+    const handle = () =>{
+      props.handleSubmit();
+      setCount(showInput = false);
+    }
+    console.log('yha props',props);
     return (
         <div className = "input-output-container">
             <div className = 'buttons-container'> 
-                <Stack direction="row" spacing={6} sx = {{bgcolor : ''}}>
+                <Stack direction="row" spacing={2} sx = {{bgcolor : ''}}>
                     
                     <Box sx={{ minWidth: 120 , height : 40  , bgcolor: '', color : 'white'}}>
                         <FormControl sx={{ minWidth: 120 , height : 40 , color : 'white'}}>
@@ -41,21 +45,45 @@ function InputOutput(props) {
                             sx={{ minWidth: 120 , height : 40 , color : 'white'}}
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
-                            // value={age}
-                            label="Age"
-                            // onChange={handleChange}
+                            label="Lang"
+                            onChange={(e) => props.changeLang(e)}
                             >
-                            <MenuItem value={1}>C++</MenuItem>
-                            <MenuItem value={2}>JAVA</MenuItem>
-                            <MenuItem value={3}>Python</MenuItem>
+                            <MenuItem selected value="cpp">C++</MenuItem>
+                            <MenuItem value="java">JAVA</MenuItem>
+                            <MenuItem value="py">Python</MenuItem>
+                            <MenuItem value= "c">C</MenuItem>
+                            <MenuItem value="cs">C#</MenuItem>
+                            <MenuItem value="rb">Ruby</MenuItem>
+                            <MenuItem value="kt">Kotlin</MenuItem>
+                            <MenuItem value="swift">Swift</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </Box>
+                    <Box sx={{ minWidth: 120 , height : 40  , bgcolor: '', color : 'white'}}>
+                        <FormControl sx={{ minWidth: 120 , height : 40 , color : 'white'}}>
+                            <InputLabel sx={{ minWidth: 120 , height : 40 , color : 'white'}} id="demo-simple-select-label">Theme</InputLabel>
+                            <Select 
+                            sx={{ minWidth: 120 , height : 40 , color : 'white'}}
+                            labelId="demo-simple-select"
+                            id="demo-simple"
+                            // value={age}
+                            label="Theme"
+                            onChange={(e)=>props.changeTheme(e)}
+                            >
+                            <MenuItem selected value="monokai">monokai</MenuItem>
+                            <MenuItem value="mono_industrial">mono_industrial</MenuItem>
+                            <MenuItem value= "nord_dark">nord_dark</MenuItem>
+                            <MenuItem value= "one_dark">one_dark</MenuItem>
+                            <MenuItem value="pastel_on_dark">pastel_on_dark</MenuItem>
+                            <MenuItem value= "solarized_light">solarized_light</MenuItem>
                             </Select>
                         </FormControl>
                     </Box>
                    
                 
-                    <Button   variant="contained" onClick = {() =>setCount(showInput = true)}>Input</Button>
-                    <Button sx = {{bgcolor : ''}}variant="contained" onClick = {() =>setCount(showInput = false)}>Output</Button>
-                    <Button color = "secondary" variant="contained" onClick = {() => props.handleSubmit()} endIcon={<SendIcon /> }>Run</Button>
+                    <Button  variant="contained" onClick = {() =>setCount(showInput = true)}>Input</Button>
+                    <Button  variant="contained" onClick = {() =>setCount(showInput = false)}>Output</Button>
+                    <Button   color = "secondary" variant="contained" onClick = {() => handle()} endIcon={<SendIcon /> }>Run</Button>
                 </Stack>
             </div>
 

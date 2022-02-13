@@ -15,11 +15,13 @@ export default class Footer extends Component {
             val : {
                 error: false, htmlString: ""
             },
-            url :  "https://codeforces.com/contest/1325/problem/D",
+            url :  "https://codeforces.com/problemset/problem/1217/B",
             preurl : "https://cors-anywhere-jaagrav.herokuapp.com/"
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    
     handleChange = (e) => {
         this.setState({
             url : e.target.value
@@ -50,6 +52,9 @@ export default class Footer extends Component {
             })
         }
         console.log('this->state' , this.state.val.htmlString);
+    }
+    componentDidMount(){
+        this.handleSubmit();
     }
     render( ) {
         
